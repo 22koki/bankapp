@@ -1,10 +1,13 @@
-// App.js
 
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import TransactionList from './components/TransactionList';
+import styled from 'styled-components'; // Add this import statement
 import TransactionForm from './components/TransactionForm';
+import TransactionList from './components/TransactionList';
 import TransactionSearch from './components/TransactionSearch';
+
+// Rest of your code remains the same
+// ...
+
 
 const AppContainer = styled.div`
   font-family: Arial, sans-serif;
@@ -26,7 +29,7 @@ const AppContent = styled.div`
 function App() {
   const [transactions, setTransactions] = useState([]);
   const [filteredTransactions, setFilteredTransactions] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState(''); // Move searchTerm state to the App component
 
   // Define the onAddTransaction function to handle adding new transactions
   const onAddTransaction = (newTransaction) => {
@@ -35,27 +38,25 @@ function App() {
   };
 
   // Fetch transactions from the server and update the state
- // Fetch transactions from the server and update the state
+  // Fetch transactions from the server and update the state
 useEffect(() => {
-  fetch(' http://localhost:3000/transactions')
+  fetch('http://localhost:3000/transactions')
     .then((response) => {
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error('Network response was not ok'); // Add the missing semicolon
       }
       return response.json();
     })
     .then((data) => {
-      console.log('Fetched data:', data); // Log the data
+      console.log('Fetched data:', data);
       setTransactions(data);
       setFilteredTransactions(data);
     })
     .catch((error) => {
       console.error('Error fetching data:', error);
-      // Handle the error, e.g., show a message to the user
     });
 }, []);
 
-  
 
   // Function to filter transactions based on search term
   const filterTransactions = (searchTerm) => {
@@ -75,8 +76,11 @@ useEffect(() => {
       <AppHeader>The Bank of Flatiron</AppHeader>
 
       <AppContent>
-        <TransactionForm onAddTransaction={onAddTransaction} /> {/* Pass onAddTransaction as a prop */}
-        <TransactionSearch filterTransactions={filterTransactions} searchTerm={searchTerm} />
+        <TransactionForm onAddTransaction={onAddTransaction} />
+        <TransactionSearch
+          filterTransactions={filterTransactions}
+          searchTerm={searchTerm} // Pass searchTerm as a prop
+        />
         <TransactionList transactions={filteredTransactions} />
       </AppContent>
     </AppContainer>
