@@ -7,9 +7,6 @@ const TransactionForm = ({ onAddTransaction }) => {
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState(new Date());
   const [category, setCategory] = useState('');
-  const handleCategoryChange = (event) => {
-    setCategory(event.target.value);
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,17 +26,12 @@ const TransactionForm = ({ onAddTransaction }) => {
   };
 
   const formStyle = {
-    
     padding: '20px',
-    borderadius: '5px',
-    marginBottom:  '1rem',
-
-    //boxShadow: '0 0 10px rgba(6, 8, 5, 0.8)',
+    borderRadius: '5px',
+    marginBottom: '1rem',
     width: '300px',
     margin: '0 auto',
   };
-  
-  
 
   const labelStyle = {
     display: 'block',
@@ -65,14 +57,12 @@ const TransactionForm = ({ onAddTransaction }) => {
     borderRadius: '5px',
     marginTop: '20px',
     float: 'center',
-   
   };
 
   return (
     <div style={formStyle}>
       <h2>Add a New Transaction</h2>
       <form onSubmit={handleSubmit}>
-      
         <div>
           <label htmlFor="description" style={labelStyle}>
             Description:
@@ -98,18 +88,17 @@ const TransactionForm = ({ onAddTransaction }) => {
           />
         </div>
         <div>
-        <label htmlFor="category" style={labelStyle}>
-        Category:
-        </label>
-        <input
-          type="text"
-          id="category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
+          <label htmlFor="category" style={labelStyle}>
+            Category:
+          </label>
+          <input
+            type="text"
+            id="category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
             style={inputStyle}
-       />
-      </div>
-
+          />
+        </div>
         <div>
           <label htmlFor="date" style={labelStyle}>
             Date:

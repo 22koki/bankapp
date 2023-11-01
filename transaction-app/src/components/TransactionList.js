@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-function TransactionList({ transactions }) {
+function TransactionList() {
+  const [transactions, setTransactions] = useState([]);
   const cellStyle = {
-    padding: '8px', // Adjust the padding as needed
+    padding: '8px',
   };
+
+  useEffect(() => {
+    // Fetch transactions when the component mounts
+    fetch('http://localhost:8001/transactions')
+      .then((response) => response.json())
+      .then((data) => setTransactions(data))
+      .catch((error) => console.error('Error fetching data:', error));
+  }, []); // The empty dependency array ensures that the effect runs only once
 
   return (
     <div>
