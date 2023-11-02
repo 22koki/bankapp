@@ -1,9 +1,10 @@
 
+
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'; // Add this import statement
-import TransactionForm from './components/TransactionForm';
-import TransactionList from './components/TransactionList';
+//import TransactionForm from './components/TransactionForm';
 import TransactionSearch from './components/TransactionSearch';
+import TransactionList from './components/TransactionList';
 
 // Rest of your code remains the same
 // ...
@@ -32,10 +33,10 @@ function App() {
   const [searchTerm, setSearchTerm] = useState(''); // Move searchTerm state to the App component
 
   // Define the onAddTransaction function to handle adding new transactions
-  const onAddTransaction = (newTransaction) => {
+  //const onAddTransaction = (newTransaction) => {
     // Implement the logic to add the new transaction here
     // You can use setTransactions to update the transactions state.
-  };
+ // };
 
   // Fetch transactions from the server and update the state
   // Fetch transactions from the server and update the state
@@ -70,17 +71,19 @@ useEffect(() => {
       setFilteredTransactions(filtered);
     }
   };
+  
 
   return (
     <AppContainer>
       <AppHeader>The Bank of Flatiron</AppHeader>
 
       <AppContent>
-        <TransactionForm onAddTransaction={onAddTransaction} />
+    
         <TransactionSearch
           filterTransactions={filterTransactions}
           searchTerm={searchTerm} // Pass searchTerm as a prop
         />
+        
         <TransactionList transactions={filteredTransactions} />
       </AppContent>
     </AppContainer>

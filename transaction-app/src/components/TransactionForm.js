@@ -35,7 +35,7 @@ const TransactionForm = ({ onAddTransaction }) => {
   };
 
   const labelStyle = {
-    display: 'block',
+    display: 'flex',
     margin: '10px 0',
     fontWeight: 'bold',
   };
@@ -52,7 +52,7 @@ const TransactionForm = ({ onAddTransaction }) => {
     width: '100%',
     padding: '10px',
     margin: '5px 0',
-    borderRadius: '5px',
+    borderRadius: '10px',
     border: '1px solid #ccc',
     fontSize: '16px',
   };
@@ -114,7 +114,12 @@ const TransactionForm = ({ onAddTransaction }) => {
         <label htmlFor="date" style={labelStyle}>
           Date:
         </label>
-        <DatePicker selected={transaction.date} onChange={handleDateChange} dateFormat="yyyy-MM-dd" style={inputStyle} />
+        <DatePicker
+          selected={transaction.date}
+          onChange={handleDateChange}
+          dateFormat="yyyy-MM-dd"
+          style={inputStyle}
+        />
       </div>
       <button type="button" onClick={handleAddTransaction} style={buttonStyle}>
         Add Transaction

@@ -3,6 +3,7 @@ import TransactionForm from './TransactionForm';
 
 const cellStyle = {
   padding: '8px',
+
 };
 
 const deleteButtonStyle = {
@@ -11,19 +12,22 @@ const deleteButtonStyle = {
   border: 'none',
   padding: '5px 10px',
   cursor: 'pointer',
-  borderRadius: '5px',
+  borderRadius: '25px',
+
 };
 
 const headerStyle = {
-  fontSize: '24px',
-  color: '#0074d9',
+  fontSize: '34px',
+  color: 'black',
   marginBottom: '20px',
+
 };
 
 const tableStyle = {
   width: '100%',
   borderCollapse: 'collapse',
   margin: '20px 0',
+
 };
 
 // Function to add a new transaction
@@ -57,6 +61,8 @@ function TransactionList() {
 
   return (
     <div>
+      <TransactionForm onAddTransaction={(newTransaction) => addTransaction(transactions, setTransactions, newTransaction)} />
+
       <h2 style={headerStyle}>Transaction List</h2>
       <input
         type="text"
@@ -90,7 +96,6 @@ function TransactionList() {
           ))}
         </tbody>
       </table>
-      <TransactionForm onAddTransaction={(newTransaction) => addTransaction(transactions, setTransactions, newTransaction)} />
     </div>
   );
 }

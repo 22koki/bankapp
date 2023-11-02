@@ -7,16 +7,17 @@ function TransactionSearch({ filterTransactions }) {
     filterTransactions(searchTerm);
   };
 
-  // Define your inline CSS styles
   const inputStyles = {
-    padding: '10px',
-    marginRight: '10px',
+    padding: '15px',
+    marginRight: '15px',
+    borderRadius: '25px'
   };
 
   const buttonStyles = {
     padding: '10px 20px',
-    backgroundColor: '#0074d9',
-    color: 'white',
+    backgroundColor: 'white',
+    color: 'black',
+    borderRadius: '25px',
     border: 'none',
     cursor: 'pointer',
   };
@@ -25,12 +26,13 @@ function TransactionSearch({ filterTransactions }) {
     <div>
       <input
         type="text"
-        placeholder="Search by description"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        style={inputStyles} // Apply the input styles
+        style={inputStyles}
       />
-      <button onClick={handleSearch} style={buttonStyles}>Search</button> {/* Apply the button styles */}
+      <button onClick={handleSearch} style={buttonStyles}>
+        Search
+      </button>
     </div>
   );
 }
